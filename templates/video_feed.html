@@ -1,0 +1,72 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('#start').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/start_recording',
+                function(data) {
+              //do <nothing></nothing>
+            });
+            return false;
+          });
+        });
+</script>
+
+<script type=text/javascript>
+        $(function() {
+          $('#stop').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/stop_recording',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+</script>
+
+<script type=text/javascript>
+        $(function() {
+          $('#snapshot').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/screen_capture',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+</script>
+
+<script type=text/javascript>
+        $(function() {
+          $('#viewkyc').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/get_queue',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+</script>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8  offset-lg-2">
+            <h3 class="mt-5">vKYC</h3>
+            <img src="{{ url_for('video_feed') }}" width="50%">
+            <form>
+                <a href=# id=start><button class='btn btn-default'>Start Recording</button></a>
+                <a href=# id=stop><button class='btn btn-default'>Stop Recording</button></a>
+                <a href=# id=snapshot><button class='btn btn-default'>Snapshot</button></a>
+                <button type="button" onclick="window.location.href='{{ url_for( 'get_queue' ) }}';">View Submitted KYCs</button>
+            </form>
+        </div>
+        IP: {{info}}
+        <br>
+        Country: {{country}}
+    </div>
+</div>
+</body>
